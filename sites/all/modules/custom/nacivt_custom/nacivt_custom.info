@@ -1,0 +1,4 @@
+name = nacivt Custom Code
+description = Custom Code for the nacivt site.
+package = nacivt
+core = 7.x

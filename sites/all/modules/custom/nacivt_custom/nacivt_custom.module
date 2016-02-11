@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Custom nacivt Code
+ */
+
+
+function nacivt_custom_commerce_checkout_complete($order) {
+  nacivt_custom_create_team($order);
+}
+
+function nacivt_custom_create_team($order) {
+
+  foreach ($order->commerce_line_items['und'] as $line) {
+    $line_item = commerce_line_item_load($line['line_item_id']);
+    // Create the Node and assign it to the user
+    $node = new stdClass();
+
+    // Title
+    $node->title = $line_item->title_field[LANGUAGE_NONE][0]['value'];
+    $node->title_field[LANGUAGE_NONE][]['value'] = $line_item->title_field[LANGUAGE_NONE][0]['value'];
+    $node->type = 'team';
+    $node->language = LANGUAGE_NONE; // Or e.g. 'en' if locale is enabled
+    $node->uid = $order->uid;
+    node_object_prepare($node); // Sets some defaults. Invokes hook_prepare() and hook_node_prepare().
+    $node->status = 1; //(1 or 0): published or not
+    $node->promote = 0; //(1 or 0): promoted to front page
+
+    // City
+    $node->field_city[LANGUAGE_NONE][0]['value'] = $line_item->field_city[LANGUAGE_NONE][0]['value'];
+    // Country
+    $node->field_country[LANGUAGE_NONE][0]['value'] = $line_item->field_country[LANGUAGE_NONE][0]['value'];
+
+    // Mens or Womens
+
+    $node->field_mens_womens['und'][0]['value'] = $line_item->field_mens_womens[LANGUAGE_NONE][0]['value'];
+
+
+    //Club
+    $node->field_club[LANGUAGE_NONE][]['tid'] = $line_item->field_club[LANGUAGE_NONE][0]['tid'];
+
+    // 'node' is default,
+    // Other possible values are "user" and  "taxonomy_term"
+
+    $node = node_submit($node); // Prepare node for saving
+    $rval = node_save($node);
+    //drupal_set_message( "Node with nid " . $node->nid . " saved!\n");
+
+  }
+  return $rval;
+}
