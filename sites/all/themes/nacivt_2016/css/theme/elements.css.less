@@ -1,5 +1,145 @@
-.header {
-	background: rgba(0,0,0,.8);
+  .breadcrumb {
+    h2 {
+      margin: 0;
+    }
+    li {
+      list-style: none;
+      font-size: .8em;
+      a {
+        text-decoration: none;
+      }
+      
+    }
+  }
+  
+  .front { 
+    #page-title{
+      display: none;
+    }
+    .breadcrumb {
+      display: none;
+    }
+  }
+  
+  .field-type-text-with-summary p {
+    line-height: 1.4em;
+  }
+ 
+  .footer-wrapper {
+    background: #666;
+    padding: 50px;   
+  }
+
+  html {
+    background: #666;
+    font-family: Verdana, 'Times New Roman';
+  }
+  
+  .page-user #main {
+    padding-top: 135px;
+  }
+  
+  .region-footer {
+    margin: 0 auto;
+    width: @width-page;
+  }
+  
+  #main {
+    min-height: 500px;
+    article {
+      a {
+        color: @color-orange;
+        &:hover {
+          color: @color-blue;
+        }
+      }
+    }
+  }
+  
+  body.node-type-team {
+    .field-name-field-logo {
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+    .team-info-group {
+      display: inline-block;
+      margin-bottom: 50px;
+      width: 50%;
+      > div {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  body.node-type-sponsor {
+    .field-name-field-image {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;  
+    }
+    .sponsor-info-group {
+      display: inline-block;
+      margin-bottom: 50px;
+      width: 50%;
+      > div {
+        margin-bottom: 10px;
+      }
+    }    
+  }
+  
+  
+  #page {
+    background: #FFF;
+  }
+  
+  .header {
+    background: rgba(0,0,0,.8);
+    background: #000; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#000, transparent); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#000, transparent); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#000, transparent); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#000, transparent); /* Standard syntax */
+    display: inline-block;
+    min-height: 135px;
+    padding: 0 10px;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+
+.region-header {
+  width: @width-page;
+  margin: 0 auto;
+}
+
+table {
+  border: 1px solid #AAA;
+  border-spacing: 0;
+  width: 100%;
+  th {
+ //   border: 1px solid #AAA;    
+    padding: 5px 10px;
+  }
+  tr {
+     border: 0;
+  }
+  td {
+    border: 1px solid #AAA;
+    border-bottom: 0;
+    padding: 5px 10px;
+    
+  }
+}
+
+ul.tabs-primary,
+ul.tabs-secondary {
+	background: oldlace;
+	li {
+		display: inline-block;
+		text-decoration: none;
+		
+	}
 }
 
 #skip-link {
@@ -8,4 +148,11 @@
 
 body {
 	margin: 0;
+}
+
+a {
+	color: #333;
+	&:visited {
+		color: #333;
+	}
 }
